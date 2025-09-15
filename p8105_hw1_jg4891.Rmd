@@ -6,6 +6,7 @@ date: "2025-09-15"
 
 ```{r set up, include=FALSE}
 library("moderndive")
+library("tidyverse")
 data(early_january_weather)
 
 ```
@@ -19,23 +20,11 @@ mean(early_january_weather$temp)
 
 Early Janaurary weather dataset has following variables:origin, year, month, day, hour, temp,      dewp, humid, wind_dir, wind_speed, wind_gust, precip, pressure, visib, and time_hour. It has 358 rows and 15 columns. The mean temperature is 39.58212 fahrenheit degrees.
 
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r scatterplot, echo = FALSE}
+scatterplot <- ggplot(data = early_january_weather) +
+  geom_point(mapping = aes(x = time_hour, y = temp, color = humid), size = 3)
+print(scatterplot)
 ```
+A scatterplot of humidity shows that it increases on average from below 40 to 100 as time passes by and temperature increases. 
 
-## Including Plots
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
