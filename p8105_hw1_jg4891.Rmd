@@ -27,4 +27,23 @@ print(scatterplot)
 ```
 A scatterplot of humidity shows that it increases on average from below 40 to 100 as time passes by and temperature increases. 
 
+```{r df,include=FALSE}
+df = tibble(
+  norm_samp = rnorm(10, mean = 1),
+  norm_samp_pos = norm_samp > 0,
+  vec_char = rep("First quiz", 10),         
+  vec_factor = factor(rep(c("good", "bad", "average"), length.out = 10)) 
+)
+```
 
+
+```{r mean,include=FALSE}
+mean_norm_samp <- mean(pull(df, norm_samp))
+mean_norm_samp_pos <- mean(pull(df, norm_samp_pos))
+mean_vec_char <- mean(pull(df, vec_char))  
+mean_vec_factor <- mean(pull(df, vec_factor)) 
+
+```
+The mean of the first variable is `r round(mean_norm_samp, digits = 2)`. 
+The mean of the second variable is `r round(mean_norm_samp_pos, digits = 2)`.
+The third and fourth variable doesn't have a mean because they are texts instead of numerical value or logical value.
